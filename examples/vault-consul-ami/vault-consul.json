@@ -1,21 +1,21 @@
 {
   "min_packer_version": "0.12.0",
   "variables": {
-    "aws_region": "us-east-1",
+    "aws_region": "us-east-2",
     "vault_version": "1.1.0",
     "consul_module_version": "v0.4.2",
     "consul_version": "1.3.1",
     "consul_download_url": "{{env `CONSUL_DOWNLOAD_URL`}}",
     "vault_download_url": "{{env `VAULT_DOWNLOAD_URL`}}",
     "install_auth_signing_script": "true",
-    "ca_public_key_path": null,
-    "tls_public_key_path": null,
-    "tls_private_key_path": null
+    "ca_public_key_path": "/Users/kruttik.aggarwal/Documents/workspace-sre/terraform-aws-vault/modules/private-tls-cert/ca.crt.pem",
+    "tls_public_key_path": "/Users/kruttik.aggarwal/Documents/workspace-sre/terraform-aws-vault/modules/private-tls-cert/vault.crt.pem",
+    "tls_private_key_path": "/Users/kruttik.aggarwal/Documents/workspace-sre/terraform-aws-vault/modules/private-tls-cert/vault.key.pem"
   },
   "builders": [{
     "ami_name": "vault-consul-ubuntu-{{isotime | clean_ami_name}}-{{uuid}}",
     "ami_description": "An Ubuntu 16.04 AMI that has Vault and Consul installed.",
-    "instance_type": "t2.micro",
+    "instance_type": "t1.micro",
     "name": "ubuntu16-ami",
     "region": "{{user `aws_region`}}",
     "type": "amazon-ebs",
@@ -34,7 +34,7 @@
   },{
     "ami_name": "vault-consul-amazon-linux-2-{{isotime | clean_ami_name}}-{{uuid}}",
     "ami_description": "An Amazon Linux 2 AMI that has Vault and Consul installed.",
-    "instance_type": "t2.micro",
+    "instance_type": "t1.micro",
     "name": "amazon-linux-2-ami",
     "region": "{{user `aws_region`}}",
     "type": "amazon-ebs",

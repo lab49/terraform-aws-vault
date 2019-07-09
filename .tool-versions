@@ -1,0 +1,4 @@
+terraform 0.11.14
+terragrunt 0.18.7
+helm 2.11.0
+packer 1.4.2
